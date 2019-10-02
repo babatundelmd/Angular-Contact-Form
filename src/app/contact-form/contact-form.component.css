@@ -1,0 +1,12 @@
+
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper-box{
+    margin-top: 5%;
+    overflow-x: hidden !important;
+
+}
