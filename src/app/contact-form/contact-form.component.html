@@ -1,27 +1,34 @@
 <div class="wrapper-box">
+  <div class="container">
 
-  <div class="row">
-    <div class="col-md-4 offset-md-4">
-      <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
-        <div class="form-group">
-          <label for="Email">Email</label>
-          <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" placeholder="Enter email"
-            formControlName="Email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="fullname">Full Name</label>
-          <input type="text" class="form-control" name="Fullname" placeholder="Full Name" formControlName="Fullname">
-        </div>
+    <h2 class="text-center mb-5">Angular Contact Form Hosted On FireBase</h2>
 
-        <div class="form-group">
-          <label for="comment">Comment</label>
-          <textarea class="form-control" formControlName="Comment" name="Comment">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" placeholder="Enter email"
+              formControlName="Email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" class="form-control" name="Fullname" placeholder="Full Name" formControlName="Fullname">
+          </div>
 
+          <div class="form-group">
+            <label for="comment">Comment</label>
+            <textarea class="form-control" formControlName="Comment" name="Comment">
           </textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!FormData.value">Submit</button>
-      </form>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!FormData.valid">Submit
+            <!-- <div class="spinner-border text-primary" role="status" *ngIf="loading">
+            <span class="sr-only">Loading...</span>
+          </div> -->
+          </button>
+        </form>
+      </div>
 
     </div>
 

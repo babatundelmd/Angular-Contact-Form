@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms'
 import { ServicesService } from '../services.service';
 import { ContactModel } from '../model.ts/contact-model';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact-form',
@@ -10,6 +11,7 @@ import { ContactModel } from '../model.ts/contact-model';
 })
 export class ContactFormComponent implements OnInit {
   FormData: FormGroup;
+  loading: boolean = false;
   constructor(private builder: FormBuilder, private contact: ServicesService) { }
 
   ngOnInit() {
@@ -21,14 +23,20 @@ export class ContactFormComponent implements OnInit {
   }
 
 
-  onSubmit() {
-    console.log(this.FormData.value)
-    this.contact.PostMessage(this.FormData.value).subscribe(response => {
-      location.href = 'https://mailthis.to/confirm'
-      console.log(response)
-    }, error => {
-      console.warn(error.responseText)
-      console.log({ error })
-    })
+  onSubmit(FormData: NgForm) {
+    this.loading = true;
+    console.log(FormData)
+    this.contact.PostMessage(this.FormData.value).pipe(
+      finalize(() => {
+        this.loading = false;
+      })
+    )
+      .subscribe(response => {
+        location.href = 'https://mailthis.to/confirm'
+        console.log(response)
+      }, error => {
+        console.warn(error.responseText)
+        console.log({ error })
+      })
   }
 }

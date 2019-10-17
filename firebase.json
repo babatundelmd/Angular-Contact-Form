@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/ContactForm",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
