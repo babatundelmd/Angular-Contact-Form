@@ -11,7 +11,6 @@ import { finalize } from 'rxjs/operators';
 })
 export class ContactFormComponent implements OnInit {
   FormData: FormGroup;
-  loading: boolean = false;
   constructor(private builder: FormBuilder, private contact: ServicesService) { }
 
   ngOnInit() {
@@ -23,14 +22,9 @@ export class ContactFormComponent implements OnInit {
   }
 
 
-  onSubmit(FormData: NgForm) {
-    this.loading = true;
+  onSubmit(FormData) {
     console.log(FormData)
-    this.contact.PostMessage(this.FormData.value).pipe(
-      finalize(() => {
-        this.loading = false;
-      })
-    )
+    this.contact.PostMessage(FormData)
       .subscribe(response => {
         location.href = 'https://mailthis.to/confirm'
         console.log(response)
@@ -39,4 +33,6 @@ export class ContactFormComponent implements OnInit {
         console.log({ error })
       })
   }
+
+
 }

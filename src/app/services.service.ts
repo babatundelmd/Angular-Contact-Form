@@ -9,17 +9,16 @@ import { HttpHeaders } from '@angular/common/http'
   providedIn: 'root'
 })
 export class ServicesService {
-  private api = 'https://mailthis.to/codeninja'
+  private api = 'https://mailthis.to/alias'
 
   constructor(private http: HttpClient) { }
 
-
   PostMessage(input: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json'
+    //   })
+    // };
     return this.http.post(this.api, input, { responseType: 'text' }).pipe(
       map(
         (response) => {
@@ -33,4 +32,5 @@ export class ServicesService {
       )
     )
   }
+
 }

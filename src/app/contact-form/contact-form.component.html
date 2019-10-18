@@ -1,8 +1,6 @@
 <div class="wrapper-box">
   <div class="container">
-
     <h2 class="text-center mb-5">Angular Contact Form Hosted On FireBase</h2>
-
     <div class="row">
       <div class="col-md-6 offset-md-3">
         <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
@@ -23,15 +21,9 @@
           </textarea>
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="!FormData.valid">Submit
-            <!-- <div class="spinner-border text-primary" role="status" *ngIf="loading">
-            <span class="sr-only">Loading...</span>
-          </div> -->
           </button>
         </form>
       </div>
-
     </div>
-
   </div>
-
 </div>
