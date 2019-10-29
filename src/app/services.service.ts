@@ -9,17 +9,17 @@ import { HttpHeaders } from '@angular/common/http'
   providedIn: 'root'
 })
 export class ServicesService {
-  private api = 'https://mailthis.to/alias'
+  private mailApi = 'https://mailthis.to/codeninja'
 
   constructor(private http: HttpClient) { }
 
   PostMessage(input: any) {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json'
-    //   })
-    // };
-    return this.http.post(this.api, input, { responseType: 'text' }).pipe(
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(this.mailApi, input, { responseType: 'text' }).pipe(
       map(
         (response) => {
           if (response) {
