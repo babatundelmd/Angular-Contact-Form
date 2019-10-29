@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms'
 import { ServicesService } from '../services.service';
-import { ContactModel } from '../model.ts/contact-model';
-import { finalize } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-contact-form',
@@ -33,6 +32,4 @@ export class ContactFormComponent implements OnInit {
         console.log({ error })
       })
   }
-
-
 }
