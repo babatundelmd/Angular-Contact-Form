@@ -14,23 +14,19 @@ export class ServicesService {
   constructor(private http: HttpClient) { }
 
   PostMessage(input: any) {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json'
-    //   })
-    // };
-    return this.http.post(this.mailApi, input, { responseType: 'text' }).pipe(
-      map(
-        (response) => {
-          if (response) {
-            return response;
+    return this.http.post(this.mailApi, input, { responseType: 'text' })
+      .pipe(
+        map(
+          (response) => {
+            if (response) {
+              return response;
+            }
+          },
+          (error: any) => {
+            return error;
           }
-        },
-        (error: any) => {
-          return error;
-        }
+        )
       )
-    )
   }
 
 }
